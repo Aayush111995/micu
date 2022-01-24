@@ -1,0 +1,30 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /micu/api
+logging:
+  level:
+    root: ${LOGGING_LEVEL_ROOT:info}
+    org.hibernate.sql: debug
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/micu
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: ${SCRATCH-CARD-DB-MAX-POOL-SIZE:5}
+      leak-detection-threshold: ${SCRATCH-CARD-DB-LEAK-DETECTION-THRESHOLD:30000}
+
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.xml
+
+  payment:
+    test: test
+
+
+
