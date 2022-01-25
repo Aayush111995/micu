@@ -5,7 +5,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 	<!-- user table details -->
-	<changeSet author="tkay (generated)" id="1622707804">
+	<changeSet author="tkay (generated)" id="1622704842">
 		<createTable tableName="user">
 			<column name="id" type="VARCHAR(128)">
 				<constraints nullable="false"/>
@@ -13,7 +13,6 @@
 			<column name="name" type="varchar(200)"/>
 			<column name="mobile_number" type="VARCHAR(50)"/>
 			<column name="email" type="VARCHAR(128)"/>
-			<column name="address_id" type="VARCHAR(128)"/>
 			<column name="created_date" type="datetime(6)"/>
 
 		</createTable>
@@ -296,12 +295,7 @@
 		</createIndex>
 	</changeSet>
 
-	<changeSet author="tkay (generated)" id="1622707127">
-		<addForeignKeyConstraint baseColumnNames="address_id" baseTableName="user"
-								 constraintName="FK1todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
-								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
-								 referencedColumnNames="id" referencedTableName="address"/>
-	</changeSet>
+
 
 	<changeSet author="tkay (generated)" id="1622707128">
 		<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="address"
