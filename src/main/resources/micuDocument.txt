@@ -55,8 +55,7 @@
    					total_amount
    					discount_amount
    					status
-   					coupon_id
-   					address_id 	
+   					address_id
    					updated_date
    					created_date				
 
@@ -83,11 +82,11 @@
  					 name
  					 phone_number
  					 address
- 10 . delivery_orders
+ 10 . delivery_order
  					id
  					delivery_boy_id
  					order_id
- 					time
+ 					delivery_date
  					status
  					source // source of pick up 					 	 					
 
