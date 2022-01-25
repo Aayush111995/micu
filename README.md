@@ -7,7 +7,7 @@
    			       phone_number
    			       name
    			       email
-   			       address_id
+   			       
 
    2 . address --
    				   id
