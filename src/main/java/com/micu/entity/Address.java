@@ -13,7 +13,7 @@ public class Address {
     @Column(name="id")
     private long id;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name="user_id")
     private User user;
 

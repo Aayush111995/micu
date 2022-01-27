@@ -15,14 +15,14 @@ public class Cart {
     @Column(name = "id")
     private long id;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "product_json")
     private String productjson;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "address_id")
     private Address address;
 

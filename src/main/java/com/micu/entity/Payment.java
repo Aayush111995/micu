@@ -16,11 +16,11 @@ public class Payment {
     @Column(name = "id")
     private long id;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
 

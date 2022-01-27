@@ -16,11 +16,11 @@ public class UserPlan {
     @Column(name = "id")
     private long id;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "product_id")
     private Product product;
 
