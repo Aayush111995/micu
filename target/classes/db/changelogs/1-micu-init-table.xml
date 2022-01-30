@@ -4,8 +4,8 @@
 		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-	<!-- user_details table details -->
-	<changeSet author="tkay (generated)" id="1622707804">
+	<!-- user table details -->
+	<changeSet author="tkay (generated)" id="1622704842">
 		<createTable tableName="user">
 			<column name="id" type="VARCHAR(128)">
 				<constraints nullable="false"/>
@@ -13,7 +13,6 @@
 			<column name="name" type="varchar(200)"/>
 			<column name="mobile_number" type="VARCHAR(50)"/>
 			<column name="email" type="VARCHAR(128)"/>
-			<column name="address_id" type="VARCHAR(128)"/>
 			<column name="created_date" type="datetime(6)"/>
 
 		</createTable>
@@ -27,5 +26,374 @@
 					 tableName="user">
 			<column name="id"/>
 		</createIndex>
+	</changeSet>
+
+
+	<!-- address table details -->
+
+	<changeSet author="tkay (generated)" id="1622707100">
+		<createTable tableName="address">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="user_id" type="varchar(128)"/>
+			<column name="locality" type="VARCHAR(200)"/>
+			<column name="city" type="VARCHAR(128)"/>
+			<column name="pincode" type="VARCHAR(128)"/>
+			<column name="lat" type="VARCHAR(128)"/>
+			<column name="long" type="VARCHAR(128)"/>
+			<column name="address" type="VARCHAR(400)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707101">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="address"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707102">
+		<createIndex indexName="idaddressindexdsgvwgw2"
+					 tableName="address">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+
+	<!-- product table details -->
+
+	<changeSet author="tkay (generated)" id="1622707103">
+		<createTable tableName="product">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="name" type="varchar(128)"/>
+			<column name="mrp" type="VARCHAR(128)"/>
+			<column name="product_meta_data" type="VARCHAR(5000)"/>
+			<column name="product_type" type="VARCHAR(128)"/>
+			<column name="quantity" type="VARCHAR(50)"/>
+			<column name="unit" type="VARCHAR(50)"/>
+			<column name="created_date" type="datetime(6)"/>
+			<column name="discounted_percentage" type="VARCHAR(50)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707104">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="product"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707105">
+		<createIndex indexName="idproductindexdsgvwgw2"
+					 tableName="product">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+
+
+	<!-- order table details -->
+
+	<changeSet author="tkay (generated)" id="1622707106">
+		<createTable tableName="order">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="user_id" type="varchar(128)"/>
+			<column name="product_id" type="VARCHAR(128)"/>
+			<column name="amount" type="VARCHAR(100)"/>
+			<column name="product_type" type="VARCHAR(128)"/>
+			<column name="created_date" type="datetime(6)"/>
+			<column name="status" type="VARCHAR(50)"/>
+			<column name="address_id" type="VARCHAR(128)"/>
+			<column name="delivery_date" type="datetime(6)"/>
+			<column name="timeslot" type="time(6)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707107">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="order"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707108">
+		<createIndex indexName="idorderindexdsgvwgw2"
+					 tableName="order">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+
+
+	<!-- user_plan table details -->
+
+	<changeSet author="tkay (generated)" id="1622707109">
+		<createTable tableName="user_plan">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="user_id" type="varchar(128)"/>
+			<column name="plan_type" type="VARCHAR(128)"/>
+			<column name="product_id" type="VARCHAR(128)"/>
+			<column name="start_date" type="datetime(6)"/>
+			<column name="status" type="VARCHAR(50)"/>
+			<column name="expiry_date" type="datetime(6)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707110">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="user_plan"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707111">
+		<createIndex indexName="iduser_planindexdsgvwgw2"
+					 tableName="user_plan">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+	<!-- cart table details -->
+
+	<changeSet author="tkay (generated)" id="1622707112">
+		<createTable tableName="cart">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="user_id" type="varchar(128)"/>
+			<column name="product_json" type="VARCHAR(5000)"/>
+			<column name="payable_amount" type="VARCHAR(100)"/>
+			<column name="total_amount" type="VARCHAR(100))"/>
+			<column name="discount_amount" type="VARCHAR(100))"/>
+			<column name="address_id" type="VARCHAR(128))"/>
+			<column name="status" type="VARCHAR(50)"/>
+			<column name="updated_date" type="datetime(6)"/>
+			<column name="created_date" type="datetime(6)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707113">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="cart"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707114">
+		<createIndex indexName="idcartindexdsgvwgw2"
+					 tableName="cart">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+
+
+	<!-- payment table details -->
+
+	<changeSet author="tkay (generated)" id="1622707115">
+		<createTable tableName="payment">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="user_id" type="varchar(128)"/>
+			<column name="payment_response" type="VARCHAR(5000)"/>
+			<column name="amount" type="VARCHAR(100)"/>
+			<column name="payment_type" type="VARCHAR(100))"/>
+			<column name="cart_id" type="VARCHAR(128))"/>
+			<column name="pg" type="VARCHAR(50))"/>
+			<column name="status" type="VARCHAR(50)"/>
+			<column name="updated_date" type="datetime(6)"/>
+			<column name="created_date" type="datetime(6)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707116">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="payment"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707117">
+		<createIndex indexName="idpaymentindexdsgvwgw2"
+					 tableName="payment">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+
+
+	<!-- refund table details -->
+
+	<changeSet author="tkay (generated)" id="1622707118">
+		<createTable tableName="refund">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="user_id" type="varchar(128)"/>
+			<column name="payment_response" type="VARCHAR(5000)"/>
+			<column name="amount" type="VARCHAR(100)"/>
+			<column name="payment_type" type="VARCHAR(100))"/>
+			<column name="cart_id" type="VARCHAR(128))"/>
+			<column name="pg" type="VARCHAR(50))"/>
+			<column name="status" type="VARCHAR(50)"/>
+			<column name="updated_date" type="datetime(6)"/>
+			<column name="created_date" type="datetime(6)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707119">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="refund"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707120">
+		<createIndex indexName="idrefundindexdsgvwgw2"
+					 tableName="refund">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+
+
+	<!-- delivery_boy table details -->
+
+	<changeSet author="tkay (generated)" id="1622707121">
+		<createTable tableName="delivery_boy">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="name" type="varchar(128)"/>
+			<column name="phone_number" type="VARCHAR(50)"/>
+			<column name="address" type="VARCHAR(500)"/>
+			<column name="created_date" type="datetime(6)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707122">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="delivery_boy"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707123">
+		<createIndex indexName="iddeliveryboyindexdsgvwgw2"
+					 tableName="delivery_boy">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+	<!-- delivery_order table details -->
+
+	<changeSet author="tkay (generated)" id="1622707124">
+		<createTable tableName="delivery_order">
+			<column name="id" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="delivery_boy_id" type="varchar(128)"/>
+			<column name="order_id" type="varchar(128)"/>
+			<column name="delivery_date" type="datetime(6)"/>
+			<column name="status" type="VARCHAR(50)"/>
+			<column name="source" type="VARCHAR(200)"/>
+
+		</createTable>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707125">
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+					   tableName="delivery_order"/>
+	</changeSet>
+	<changeSet author="tkay (generated)" id="1622707126">
+		<createIndex indexName="iddeliveryorderindexdsgvwgw2"
+					 tableName="delivery_order">
+			<column name="id"/>
+		</createIndex>
+	</changeSet>
+
+
+
+	<changeSet author="tkay (generated)" id="1622707128">
+		<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="address"
+								 constraintName="FK2todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="user"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707129">
+		<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="order"
+								 constraintName="FK3todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="user"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707130">
+		<addForeignKeyConstraint baseColumnNames="product_id" baseTableName="order"
+								 constraintName="FK4todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="product"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707131">
+		<addForeignKeyConstraint baseColumnNames="address_id" baseTableName="order"
+								 constraintName="FK5todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="address"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="16227073123">
+		<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_plan"
+								 constraintName="FK6todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="user"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707132">
+		<addForeignKeyConstraint baseColumnNames="product_id" baseTableName="user_plan"
+								 constraintName="FK7todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="product"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707133">
+		<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="cart"
+								 constraintName="FK8todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="user"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707134">
+		<addForeignKeyConstraint baseColumnNames="address_id" baseTableName="cart"
+								 constraintName="FK9todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="address"/>
+	</changeSet>
+
+
+	<changeSet author="tkay (generated)" id="1622707135">
+		<addForeignKeyConstraint baseColumnNames="cart_id" baseTableName="payment"
+								 constraintName="FK10todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="cart"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707136">
+		<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="payment"
+								 constraintName="FK11todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="user"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707137">
+		<addForeignKeyConstraint baseColumnNames="cart_id" baseTableName="refund"
+								 constraintName="FK12todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="cart"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707138">
+		<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="refund"
+								 constraintName="FK13todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="user"/>
+	</changeSet>
+
+
+	<changeSet author="tkay (generated)" id="1622707139">
+		<addForeignKeyConstraint baseColumnNames="delivery_boy_id" baseTableName="delivery_order"
+								 constraintName="FK14todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="delivery_boy"/>
+	</changeSet>
+
+	<changeSet author="tkay (generated)" id="1622707140">
+		<addForeignKeyConstraint baseColumnNames="order_id" baseTableName="delivery_order"
+								 constraintName="FK15todsnfjs7iwgdfgdfssdvsy1dth4q1ud" deferrable="false"
+								 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+								 referencedColumnNames="id" referencedTableName="order"/>
 	</changeSet>
 </databaseChangeLog>
