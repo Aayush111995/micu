@@ -1,14 +1,13 @@
 package com.micu.entity;
 
-import com.micu.entity.*;
-
 import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Date;
 
 @Data
 @Entity
-@Table(name="cart")
+@Table(name = "cart")
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

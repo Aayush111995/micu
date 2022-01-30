@@ -1,10 +1,9 @@
-
 package com.micu.service;
 
 import com.micu.model.SMS;
+import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
-import com.twilio.Twilio;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -28,7 +27,7 @@ public class SMSService {
 
         Message message = Message.creator(new PhoneNumber(sms.getTo()), new PhoneNumber(FROM_NUMBER), sms.getMessage())
                 .create();
-        System.out.println("here is my id:"+message.getSid());// Unique resource ID created to manage this transaction
+        System.out.println("here is my id:" + message.getSid());// Unique resource ID created to manage this transaction
 
     }
 

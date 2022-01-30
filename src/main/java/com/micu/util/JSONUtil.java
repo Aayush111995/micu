@@ -1,4 +1,3 @@
-
 package com.micu.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,43 +15,43 @@ import java.util.Map;
  */
 public class JSONUtil {
 
-	private static final Logger LOG = LogManager.getLogger(JSONUtil.class);
+    private static final Logger LOG = LogManager.getLogger(JSONUtil.class);
 
-	private static ObjectMapper mapper = new ObjectMapper();
+    private static ObjectMapper mapper = new ObjectMapper();
 
-	private JSONUtil() {
+    private JSONUtil() {
 
-	}
+    }
 
-	public static <T> T getObjectFromJsonString(String json, Class<T> cls) {
-		try {
-			return mapper.readValue(json.getBytes(StandardCharsets.UTF_8), cls);
-		} catch (IOException e) {
-			LOG.error("Error in getting the Object from json string" + e, e);
-		}
-		return null;
-	}
+    public static <T> T getObjectFromJsonString(String json, Class<T> cls) {
+        try {
+            return mapper.readValue(json.getBytes(StandardCharsets.UTF_8), cls);
+        } catch (IOException e) {
+            LOG.error("Error in getting the Object from json string" + e, e);
+        }
+        return null;
+    }
 
-	public static <T> String getStringFromObject(T object) {
-		try {
-			return mapper.writeValueAsString(object);
-		} catch (JsonProcessingException e) {
-			LOG.error("Error in getting string from object " + e, e);
-		}
-		return null;
-	}
+    public static <T> String getStringFromObject(T object) {
+        try {
+            return mapper.writeValueAsString(object);
+        } catch (JsonProcessingException e) {
+            LOG.error("Error in getting string from object " + e, e);
+        }
+        return null;
+    }
 
-	public static JsonNode getJsonNodeFromString(String json) {
-		try {
-			return mapper.reader().readTree(json);
-		} catch (IOException e) {
-			LOG.error("Error in getting json node from json " + e, e);
-		}
-		return null;
-	}
+    public static JsonNode getJsonNodeFromString(String json) {
+        try {
+            return mapper.reader().readTree(json);
+        } catch (IOException e) {
+            LOG.error("Error in getting json node from json " + e, e);
+        }
+        return null;
+    }
 
-	@SuppressWarnings("unchecked")
-	public static <T> Map<String, Object> getMapFromObject(T object) {
-		return mapper.convertValue(object, Map.class);
-	}
+    @SuppressWarnings("unchecked")
+    public static <T> Map<String, Object> getMapFromObject(T object) {
+        return mapper.convertValue(object, Map.class);
+    }
 }

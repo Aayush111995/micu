@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-
 public class AddressServiceImpl {
     public static Logger logger = LoggerFactory.getLogger(AddressServiceImpl.class);
     private AddressRepository addressRepository;

@@ -1,6 +1,5 @@
 package com.micu.controller;
 
-import com.micu.service.AddressServiceImpl;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

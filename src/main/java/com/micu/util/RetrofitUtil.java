@@ -17,25 +17,25 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RetrofitUtil {
 
-	private RetrofitUtil() {
-	}
+    private RetrofitUtil() {
+    }
 
 
-	public static Retrofit getRetrofit(String baseUrl, boolean addLogs) {
-		HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-		logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+    public static Retrofit getRetrofit(String baseUrl, boolean addLogs) {
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-		OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
-				.writeTimeout(10, TimeUnit.SECONDS).readTimeout(30, TimeUnit.SECONDS);
-		if (addLogs) {
-			okHttpBuilder.addInterceptor(logging);
-		}
+        OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS).readTimeout(30, TimeUnit.SECONDS);
+        if (addLogs) {
+            okHttpBuilder.addInterceptor(logging);
+        }
 
-		OkHttpClient okHttpClient = okHttpBuilder.build();
-		Gson gson = new GsonBuilder().setDateFormat(MicuConstant.DATE_FORMAT).create();
-		return new Retrofit.Builder().baseUrl(baseUrl).client(okHttpClient)
-				.addConverterFactory(GsonConverterFactory.create(gson)).build();
-	}
+        OkHttpClient okHttpClient = okHttpBuilder.build();
+        Gson gson = new GsonBuilder().setDateFormat(MicuConstant.DATE_FORMAT).create();
+        return new Retrofit.Builder().baseUrl(baseUrl).client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create(gson)).build();
+    }
 
 
 }
