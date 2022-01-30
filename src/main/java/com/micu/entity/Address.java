@@ -13,8 +13,8 @@ public class Address {
     @Column(name="id")
     private long id;
 
-    @OneToMany
-    @JoinColumn(name="user_id")
+    @ManyToOne
+    @JoinColumn(name="user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
     @Column(name="locality")

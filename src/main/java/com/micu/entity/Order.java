@@ -17,11 +17,11 @@ public class Order {
     @Column(name = "id")
     private long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
@@ -37,7 +37,7 @@ public class Order {
     @Column(name = "status")
     private String status;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
 

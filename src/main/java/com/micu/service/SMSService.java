@@ -2,7 +2,6 @@
 package com.micu.service;
 
 import com.micu.model.SMS;
-import com.twilio.websocketcallback.domain.SMS;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import com.twilio.Twilio;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.MultiValueMap;
 
-import java.net.URI;
 
 @Component
 public class SMSService {

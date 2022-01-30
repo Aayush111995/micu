@@ -15,11 +15,11 @@ public class Refund {
     @Column(name = "id")
     private long id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
 

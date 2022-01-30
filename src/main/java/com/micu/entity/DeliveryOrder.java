@@ -17,11 +17,11 @@ public class DeliveryOrder {
     @Column(name = "id")
     private long id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "delivery_boy_id")
     private DeliveryBoy deliveryBoy;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
 
